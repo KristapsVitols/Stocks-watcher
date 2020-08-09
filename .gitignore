@@ -1,0 +1,23 @@
+# GENERAL
+.idea
+node_modules
+
+# API
+api/node_modules
+api/.env
+api/dist
+
+# CLIENT
+client/node_modules
+client/dist
+client/.DS_Store
+client/npm-debug.log*
+
+# SSL
+init-letsencrypt.sh
+certs
+
+# File processer
+file-processer/node_modules
+file-processer/dist
+file-processer/.env
