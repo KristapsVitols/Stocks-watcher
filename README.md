@@ -1,1 +1,1 @@
-# JSON TO API generator
+# stocks watcher
