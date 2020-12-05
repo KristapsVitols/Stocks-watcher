@@ -35,6 +35,8 @@ services:
       - '27017:27017'
     volumes:
       - ~/mongodb:/data/db
+  redis:
+    image: 'redis:latest'
   nginx-proxy:
     image: jwilder/nginx-proxy:alpine
     ports:
