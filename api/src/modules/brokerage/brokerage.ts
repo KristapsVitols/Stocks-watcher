@@ -6,11 +6,6 @@ const brokerageSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
-        transfers: {
-            type: Array,
-            required: false,
-            default: [],
-        },
     },
     {
         timestamps: true,
@@ -18,5 +13,17 @@ const brokerageSchema = new mongoose.Schema(
         toObject: {virtuals: true}
     }
 );
+
+brokerageSchema.virtual('holdings', {
+    ref: 'Holding',
+    localField: '_id',
+    foreignField: 'brokerage',
+});
+
+brokerageSchema.virtual('transfers', {
+    ref: 'Transfer',
+    localField: '_id',
+    foreignField: 'brokerage',
+})
 
 export const Brokerage = mongoose.model('Brokerage', brokerageSchema);

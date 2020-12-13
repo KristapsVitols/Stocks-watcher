@@ -1,7 +1,8 @@
 import {Brokerage} from './brokerage';
+import {Transfer} from './brokerage-transfer';
 
 export const getBrokerages = () => {
-    return Brokerage.find();
+    return Brokerage.find().populate('transfers');
 };
 
 export const addBrokerage = async (name: string) => {

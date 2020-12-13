@@ -16,7 +16,7 @@
             <div v-for="brokerage in brokerages" :key="brokerage.name" class="col-sm">
                 <h4 class="bg-info p-2 text-dark text-center">{{ brokerage.name }}</h4>
                 <div v-for="(transfer, index) in brokerage.transfers" :key="index" class="px-2 py-1 mb-2 bg-dark text-white">
-                    <p class="mb-0">€{{ transfer.amount }} on {{ transfer.date }}</p>
+                    <p class="mb-0">€{{ transfer.amount }} on {{ getFormattedDate(transfer.date) }}</p>
                 </div>
                 <div>
                     Total: €{{ getBrokerageTotal(brokerage.name) }}
@@ -109,6 +109,13 @@ export default {
             const brokerage = this.brokerages.find(brokerage => brokerage.name === brokerageName);
 
             return brokerage.transfers.reduce((acc, transfer) => Number(transfer.amount) + acc, 0);
+        },
+        getFormattedDate(date) {
+            return new Intl.DateTimeFormat('en-US', {
+                year:  'numeric',
+                month: 'long',
+                day:   'numeric',
+            }).format(new Date(date));
         },
     },
     computed: {
