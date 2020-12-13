@@ -11,16 +11,16 @@ export const getStockQuote = async (ticker: string) => {
     const cachedData = await getAsync(ticker);
 
     if (cachedData) {
-        console.log('cache!');
+        console.log('Cached iex cloud data for: ' , ticker);
         return JSON.parse(cachedData);
     }
 
-    console.log('no cache!');
+    console.log('Getting fresh stock quotes!');
 
     const re = await fetch(`${BASE_URL}/stock/${ticker}/quote?token=${process.env.IEX_CLOUD_SECRET}`);
     const apiData = await re.json();
 
-    await setAsync(ticker, 60, JSON.stringify(apiData));
+    await setAsync(ticker, 60 * 15, JSON.stringify(apiData));
 
     return apiData;
 };

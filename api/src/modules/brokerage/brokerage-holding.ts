@@ -2,21 +2,17 @@ import mongoose from 'mongoose';
 
 const holdingSchema = new mongoose.Schema(
     {
-        name: {
-            type: String,
-            required: true,
-        },
         ticker: {
             type: String,
             required: true,
         },
-        shares: {
+        companyName: {
             type: String,
             required: true,
         },
-        price: {
-            type: String,
-            required: false,
+        shares: {
+            type: Number,
+            required: true,
         },
         brokerage: {
             // @ts-ignore
@@ -24,10 +20,6 @@ const holdingSchema = new mongoose.Schema(
             ref: 'Brokerage',
             required: true,
             index: true,
-        },
-        purchasedAt: {
-            type: Date,
-            required: true,
         },
     },
     {

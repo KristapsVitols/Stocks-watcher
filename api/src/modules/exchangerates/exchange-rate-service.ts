@@ -1,6 +1,6 @@
 import {getCurrencyData} from './exchange-api';
 
-export const convert = async (amount: string, convertTo: string) => {
+export const convert = async (amount: number, convertTo: string) => {
     const currencyData = await getCurrencyData('USD');
 
     // @ts-ignore

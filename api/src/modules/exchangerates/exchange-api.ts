@@ -11,9 +11,11 @@ export const getCurrencyData = async (currency: string) => {
     const cachedData = await getAsync(currency);
 
     if (cachedData) {
+        console.log('cached currency rates.');
         return JSON.parse(cachedData);
     }
 
+    console.log('Getting fresh currency rates...');
     const re = await fetch(`${BASE_URL}${currency}`);
     const apiData = await re.json();
 
