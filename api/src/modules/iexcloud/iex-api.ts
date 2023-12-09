@@ -11,7 +11,6 @@ export const getStockQuote = async (ticker: string) => {
     const cachedData = await getAsync(ticker);
 
     if (cachedData) {
-        console.log('Cached iex cloud data for: ' , ticker);
         return JSON.parse(cachedData);
     }
 
